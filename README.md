@@ -92,7 +92,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ```bash
 # Clone the repository
-git clone https://github.com/nbalic/network-analysis-2025.git
+git clone https://github.com/nkkko/ns-2025.git
 
 # Create and activate a virtual environment
 uv venv

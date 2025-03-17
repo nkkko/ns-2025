@@ -127,7 +127,7 @@ plt.show()
 
 ## Vertex Degree
 
-The degree of a vertex is the number of edges connected to it. In this example, node j has degree 5 (connections to i, k, l, n, o, and p).
+The degree of a vertex is the number of edges connected to it. In this example, node j has degree 6 (connections to i, k, l, n, o, and p).
 
 ![bg right:60% width:800px](images/vertex_degree.png)
 
