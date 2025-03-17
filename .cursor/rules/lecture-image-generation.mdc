@@ -90,12 +90,12 @@ This rule provides guidelines for creating Python scripts that generate images t
 ### Marp Image Integration
 - Use Marp's image syntax with width/height control in the lecture markdown:
   ```markdown
-  ![width:800px](images/image_name.png)
+  ![width:800px](mdc:images/image_name.png)
   ```
 - Consider creating both full-size and thumbnail versions for complex visualizations
 - For background images, use Marp's background image directive:
   ```markdown
-  ![bg right:40%](images/background_image.png)
+  ![bg right:40%](mdc:images/background_image.png)
   ```
 - Create separate slides for each major visualization
 - Include code examples alongside visualizations where appropriate

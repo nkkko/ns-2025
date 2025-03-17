@@ -23,24 +23,24 @@ This rule provides guidelines for effectively linking and using generated images
   ```markdown
   ## Slide Title
 
-  ![width:800px](images/image_name.png)
+  ![width:800px](mdc:images/image_name.png)
   ```
 
 ### Image Sizing Guidelines
 - Use consistent image sizes throughout a presentation
-- For full-width images: `![width:800px](images/image_name.png)`
-- For half-width images: `![width:400px](images/image_name.png)`
+- For full-width images: `![width:800px](mdc:images/image_name.png)`
+- For half-width images: `![width:400px](mdc:images/image_name.png)`
 - For side-by-side images:
   ```markdown
   <div class="columns">
   <div>
 
-  ![width:380px](images/left_image.png)
+  ![width:380px](mdc:images/left_image.png)
 
   </div>
   <div>
 
-  ![width:380px](images/right_image.png)
+  ![width:380px](mdc:images/right_image.png)
 
   </div>
   </div>
@@ -48,14 +48,14 @@ This rule provides guidelines for effectively linking and using generated images
 
 ### Background Images
 - Use background images to place content alongside visuals
-- Right-aligned background: `![bg right:40%](images/image_name.png)`
-- Left-aligned background: `![bg left:40%](images/image_name.png)`
-- Full background with opacity: `![bg brightness:0.6](images/image_name.png)`
+- Right-aligned background: `![bg right:40%](mdc:images/image_name.png)`
+- Left-aligned background: `![bg left:40%](mdc:images/image_name.png)`
+- Full background with opacity: `![bg brightness:0.6](mdc:images/image_name.png)`
 - Multiple background images:
   ```markdown
-  ![bg right:33%](images/image1.png)
-  ![bg right:33%](images/image2.png)
-  ![bg right:33%](images/image3.png)
+  ![bg right:33%](mdc:images/image1.png)
+  ![bg right:33%](mdc:images/image2.png)
+  ![bg right:33%](mdc:images/image3.png)
   ```
 
 ### Image Captions and References
@@ -63,7 +63,7 @@ This rule provides guidelines for effectively linking and using generated images
 - Credit image sources when using external images
 - Example:
   ```markdown
-  ![width:700px](images/network_analysis.png)
+  ![width:700px](mdc:images/network_analysis.png)
 
   *Figure 1: Network analysis of social connections. Source: Example Dataset (2023)*
   ```
@@ -88,7 +88,7 @@ This rule provides guidelines for effectively linking and using generated images
   </div>
   <div>
 
-  ![width:380px](images/karate_club.png)
+  ![width:380px](mdc:images/karate_club.png)
 
   </div>
   </div>
@@ -102,13 +102,13 @@ This rule provides guidelines for effectively linking and using generated images
   ```markdown
   ## Step 1: Initial Network
 
-  ![width:700px](images/algorithm_step1.png)
+  ![width:700px](mdc:images/algorithm_step1.png)
 
   ---
 
   ## Step 2: Node Removal
 
-  ![width:700px](images/algorithm_step2.png)
+  ![width:700px](mdc:images/algorithm_step2.png)
   ```
 
 ### Technical Considerations
