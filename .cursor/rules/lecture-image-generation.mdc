@@ -1,9 +1,4 @@
 ---
-description: 
-globs: 
-alwaysApply: false
----
- ---
 description: Guidelines for creating Python scripts that generate images for lecture slides
 globs: lectures/*/generate_*.py
 alwaysApply: false
@@ -26,18 +21,18 @@ This rule provides guidelines for creating Python scripts that generate images t
   import matplotlib.pyplot as plt
   import numpy as np
   import os
-  
+
   # Create images directory if it doesn't exist
   os.makedirs('images', exist_ok=True)
-  
+
   # Set random seed for reproducibility
   np.random.seed(42)
-  
+
   # Image generation functions
   def generate_image_1():
       # ...
       plt.savefig('images/image_1.png')
-      
+
   # Main execution
   if __name__ == "__main__":
       generate_image_1()
@@ -54,12 +49,12 @@ This rule provides guidelines for creating Python scripts that generate images t
   ```python
   def save_figure(G, filename, pos=None, title=None, figsize=(10, 8), dpi=100):
       plt.figure(figsize=figsize)
-      
+
       if title:
           plt.title(title, fontsize=16)
-          
+
       # ... drawing code ...
-      
+
       plt.axis('off')
       plt.tight_layout()
       plt.savefig(f'images/{filename}', dpi=dpi)
@@ -76,14 +71,14 @@ This rule provides guidelines for creating Python scripts that generate images t
   def create_network_visualization():
       """Generate visualization of network with highlighted features."""
       print("Generating network visualization...")
-      
+
       # Create and configure the graph
       G = nx.Graph()
       # ... graph creation code ...
-      
+
       # Save visualization
       save_figure(G, 'network_visualization.png', title='Network Visualization')
-      
+
       return G
   ```
 

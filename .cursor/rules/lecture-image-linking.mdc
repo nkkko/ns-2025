@@ -1,9 +1,4 @@
 ---
-description: 
-globs: 
-alwaysApply: false
----
- ---
 description: Guidelines for linking and using generated images in Marp lecture slides
 globs: lectures/*/lecture.md
 alwaysApply: false
@@ -79,7 +74,7 @@ This rule provides guidelines for effectively linking and using generated images
   ```python
   import networkx as nx
   import matplotlib.pyplot as plt
-  
+
   G = nx.karate_club_graph()
   nx.draw(G, with_labels=True)
   plt.show()
