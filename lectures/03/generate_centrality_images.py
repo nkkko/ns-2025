@@ -107,6 +107,28 @@ plt.axis('off')
 plt.savefig('images/eigenvector_centrality.png', dpi=300, bbox_inches='tight')
 plt.close()
 
+# Calculate and visualize PageRank centrality
+pagerank = nx.pagerank(G, alpha=0.85)  # alpha is the damping parameter
+plt.figure(figsize=(12, 8))
+node_sizes = [pagerank[n] * 8000 + 100 for n in G]  # Scale for visibility
+nx.draw(G, pos,
+        node_color='#ffd700',  # gold color
+        edge_color='gray',
+        node_size=node_sizes,
+        width=1,
+        with_labels=True,
+        font_size=12)
+
+# Add centrality value labels
+for node, (x, y) in pos.items():
+    plt.text(x, y-0.08, f"{pagerank[node]:.2f}",
+             ha='center', fontsize=9)
+
+plt.title('PageRank Centrality', fontsize=16)
+plt.axis('off')
+plt.savefig('images/pagerank_centrality.png', dpi=300, bbox_inches='tight')
+plt.close()
+
 # Calculate and visualize betweenness centrality
 betweenness_centrality = nx.betweenness_centrality(G)
 plt.figure(figsize=(12, 8))
@@ -158,6 +180,10 @@ for node, centrality in sorted(degree_centrality.items(), key=lambda x: x[1], re
 
 print("\nEigenvector Centrality:")
 for node, centrality in sorted(eigenvector_centrality.items(), key=lambda x: x[1], reverse=True):
+    print(f"{node}: {centrality:.3f}")
+
+print("\nPageRank Centrality:")
+for node, centrality in sorted(pagerank.items(), key=lambda x: x[1], reverse=True):
     print(f"{node}: {centrality:.3f}")
 
 print("\nBetweenness Centrality:")

@@ -35,6 +35,22 @@ Centrality measures identify the most important vertices within a graph.
 
 ---
 
+## Degree Calculation
+
+- The **degree** of a node is the number of edges connected to it
+- In network analysis, it represents the number of direct connections a node has
+- For an undirected graph:
+  - $deg(v) = |\{u \in V : (u,v) \in E\}|$
+- For a directed graph:
+  - **In-degree**: Number of incoming edges
+  - **Out-degree**: Number of outgoing edges
+
+---
+
+![width:730px](images/degree_calculation.png)
+
+---
+
 ## Degree Centrality
 
 - Simplest centrality measure
@@ -46,7 +62,7 @@ Centrality measures identify the most important vertices within a graph.
 
 ---
 
-## Example: Degree Centrality
+## Example: Normalized Degree Centrality
 
 ![width:800px](images/degree_centrality.png)
 
@@ -80,6 +96,31 @@ In our default graph:
 
 ---
 
+## PageRank Centrality
+
+- Extension of eigenvector centrality designed for directed networks
+- Forms the foundation of Google's original web search algorithm
+- Simulates a "random surfer" following links with occasional random jumps
+- Mathematically: $PR(u) = \frac{1-d}{N} + d \sum_{v \in M(u)} \frac{PR(v)}{L(v)}$
+  - Where d is damping factor (typically 0.85)
+  - N is total number of nodes
+  - M(u) is the set of nodes that link to u
+  - L(v) is the number of outbound links from node v
+
+---
+
+## Example: PageRank Centrality
+
+![width:800px](images/pagerank_centrality.png)
+
+In our default graph:
+- Node distribution is different from eigenvector centrality due to random jump probability
+- Nodes that are linked to by highly ranked nodes receive higher PageRank
+- Used extensively in web page ranking, recommendation systems, and citation analysis
+- *Note: The value below each node shows its PageRank score*
+
+---
+
 ## Betweenness Centrality
 
 - Measures the extent to which a node lies on paths between other nodes
@@ -92,13 +133,12 @@ In our default graph:
 
 ## Example: Betweenness Centrality
 
-![width:800px](images/betweenness_centrality.png)
+![bg right:50% width:700px](images/betweenness_centrality.png)
 
 In our default graph:
 - Node 'h' has the highest betweenness centrality (0.58) as it bridges the two main clusters
 - Node 'i' also has high betweenness (0.53) as it's a gateway to the bottom cluster
 - Node 'j' has significant betweenness (0.42) despite being in a single cluster
-- *Note: The value below each node shows its betweenness centrality score*
 
 ---
 
@@ -114,13 +154,28 @@ In our default graph:
 
 ## Example: Closeness Centrality
 
-![width:800px](images/closeness_centrality.png)
+![bg right:50% width:800px](images/closeness_centrality.png)
 
 In our default graph:
 - Nodes 'i' and 'h' have the highest closeness centrality (0.43 and 0.42)
 - Node 'j' also has high closeness (0.40) due to its central position in the bottom cluster
 - Peripheral nodes like 's' and 'q' have the lowest closeness (0.18 and 0.22)
-- *Note: The value below each node shows its closeness centrality score*
+
+---
+
+## Centrality Measures Comparison
+
+| Deg | Val | Eigen | Val | PR | Val | Betw | Val | Close | Val |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| **j** | 0.3 | **f** | 0.4 | **j** | 0.1 | **h** | 0.6 | **i** | 0.4 |
+| **f** | 0.3 | **g** | 0.4 | **h** | 0.1 | **i** | 0.5 | **h** | 0.4 |
+| **h** | 0.3 | **d** | 0.3 | **f** | 0.1 | **j** | 0.4 | **j** | 0.4 |
+| **b** | 0.2 | **h** | 0.3 | **i** | 0.1 | **l** | 0.3 | **n** | 0.4 |
+| **d** | 0.2 | **b** | 0.3 | **g** | 0.1 | **m** | 0.2 | **p** | 0.4 |
+
+- Node **h** ranks highly in most measures (effective bridge node)
+- Degree and PageRank favor **j** (well-connected)
+- Eigenvector centrality highlights **f** (connected to important nodes)
 
 ---
 
@@ -133,6 +188,48 @@ In our default graph:
 
 ---
 
+## Example: Graph Diameter
+
+- **Diameter** is the maximum shortest path length between any pair of nodes
+- Corresponds to the "worst-case scenario" for information propagation
+- Calculated by finding the longest shortest path between any two nodes
+- Formula: $diam(G) = \max_{u,v \in V} d(u,v)$ where $d(u,v)$ is the shortest path distance
+
+In our default graph:
+- The diameter is 8 (shortest path length between nodes 'a' and 's')
+- Long diameter indicates elongated network structure with sequential information flow
+- Important for understanding worst-case communication delays in the network
+
+---
+
+## Example: Diameter Path Visualization
+
+![width:800px](images/diameter_example.png)
+
+The complete diameter path is: a → f → h → i → j → l → m → q → s
+
+This path represents the "longest shortest path" in the network and has important implications:
+- Information must pass through at least 8 nodes to travel between the furthest points
+- Nodes along this path (especially 'h', 'i', and 'j') are critical for network connectivity
+- Breaking this path would significantly increase network fragmentation
+
+---
+
+## Example: Node Eccentricity
+
+- **Eccentricity** of a node is the greatest distance between that node and any other node in the network.
+- The **radius** is the minimum eccentricity, representing the most central nodes, while the **diameter** is the maximum eccentricity of the graph.
+- In this visualization:
+  - Nodes are color-coded by their eccentricity (from low to high using a yellow-to-red gradient).
+  - Central nodes (with eccentricity equal to the radius) are highlighted with a green border.
+  - Peripheral nodes (with eccentricity equal to the diameter) are highlighted with a blue border.
+
+---
+
+![width:800px](images/eccentricity_example.png)
+
+---
+
 ## Structural Metrics
 
 - **Density**: Ratio of actual connections to potential connections
@@ -140,6 +237,25 @@ In our default graph:
   - $D = \frac{|E|}{|V|(|V|-1)}$ for directed graphs
 - **Transitivity**: Probability that adjacent vertices of a vertex are connected
 - **Reciprocity**: Proportion of mutual connections in directed networks
+
+---
+
+## Example: Network Density
+
+- **Density** measures how close a network is to a complete graph (where all nodes are connected)
+- Values range from 0 (no edges) to 1 (all possible connections exist)
+- For undirected graphs: $D = \frac{2|E|}{|V|(|V|-1)}$
+- For directed graphs: $D = \frac{|E|}{|V|(|V|-1)}$
+
+---
+
+![bg right:50% width:700px](images/density_example.png)
+
+In our default graph:
+- 19 nodes and 30 edges
+- Maximum possible edges = 171
+- Density = 0.1754 (approximately 17.5% of possible connections exist)
+- Low density indicates a sparse network with selective connections
 
 ---
 
@@ -170,22 +286,9 @@ In our default graph:
 
 ---
 
-## Practical Applications
-
-- **Social Networks**: Identifying influencers (high centrality)
-- **Transportation Networks**: Finding critical junctions (high betweenness)
-- **Biological Networks**: Identifying essential proteins (high degree/betweenness)
-- **Communication Networks**: Optimizing information flow (path length analysis)
-- **Recommendation Systems**: Finding similar users/items (clustering)
-
----
-
 ## Calculating Metrics with NetworkX
 
 ```python
-import networkx as nx
-
-# Create a graph
 G = nx.karate_club_graph()
 
 # Calculate centrality measures
@@ -209,9 +312,6 @@ diameter = nx.diameter(G)
 ## Visualizing Network Metrics
 
 ```python
-import matplotlib.pyplot as plt
-import networkx as nx
-
 G = nx.karate_club_graph()
 pos = nx.spring_layout(G)
 
@@ -226,7 +326,6 @@ nx.draw(G, pos, with_labels=True,
 plt.title("Karate Club Graph - Node Size by Degree Centrality")
 plt.show()
 ```
-
 ---
 
 ## Interpreting Network Metrics
@@ -236,6 +335,16 @@ plt.show()
 - **Low Average Path Length**: Efficient information spread
 - **High Density**: Robust, well-connected network
 - **Community Structure**: Functional modules, interest groups
+
+---
+
+## Practical Applications
+
+- **Social Networks**: Identifying influencers (high centrality)
+- **Transportation Networks**: Finding critical junctions (high betweenness)
+- **Biological Networks**: Identifying essential proteins (high degree/betweenness)
+- **Communication Networks**: Optimizing information flow (path length analysis)
+- **Recommendation Systems**: Finding similar users/items (clustering)
 
 ---
 
@@ -252,3 +361,60 @@ plt.show()
 ## Next Lecture
 
 Network Visualization: Techniques for effectively visualizing complex networks
+
+---
+
+## Case Study: Zachary's Karate Club
+
+- Classic social network dataset from 1977 by Wayne Zachary
+- Documents social interactions between 34 members of a karate club at a US university
+- The club split into two groups following a conflict between:
+  - The instructor (node 0)
+  - The club president/administrator (node 33)
+- The network accurately predicts the actual split that occurred
+- Widely used as a benchmark for community detection algorithms
+
+---
+
+## Zachary's Karate Club Graph
+
+![width:800px](images/karate_club_graph.png)
+
+- **Nodes**: 34 club members
+- **Edges**: 78 social connections between members
+- **Communities**: The actual split resulted in two groups (shown by node color)
+- **Key Nodes**: Node 0 (instructor) and Node 33 (administrator) had the conflict
+
+---
+
+## Centrality Analysis in Karate Club
+
+![width:800px](images/karate_club_centrality.png)
+
+- **Node Size**: Proportional to degree centrality
+- **Key Insights**:
+  - Nodes 0 and 33 have highest degree centrality (leaders of the two factions)
+  - Nodes 2, 32, and 1 also have high centrality (lieutenants)
+  - Peripheral nodes have fewer connections (casual members)
+
+---
+
+## Community Structure in Karate Club
+
+![width:800px](images/karate_club_communities.png)
+
+- Graph shows communities detected by the Louvain algorithm
+- The network naturally splits into communities that closely match the actual split
+- Some nodes are boundary spanners (high betweenness centrality)
+- This demonstrates how network structure reflects and predicts real social dynamics
+
+---
+
+## Karate Club: Applied Learning Points
+
+- **Centrality**: Leaders (nodes 0 and 33) have highest centrality scores
+- **Path Length**: Average path length is 2.4 steps - information spreads quickly
+- **Clustering**: Higher clustering within each community than between them
+- **Betweenness**: Nodes that connect the communities have high betweenness (2, 8, 14)
+- **Practical Application**: Network metrics successfully predict the group split
+
