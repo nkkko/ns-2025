@@ -11,6 +11,8 @@ Network Analysis - Lecture 4
 Nikola Balic, Faculty of Natural Science, University of Split
 Data Science and Engineering Master Program
 
+26/03/2025
+
 ---
 
 ## Overview
