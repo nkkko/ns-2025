@@ -135,18 +135,6 @@
 ## 9. Network Resilience
 *(Content for this section needs to be added based on lecture materials, potentially drawing from robustness discussions in Sections 7 & 8)*
 
----
-
-## 10. Dynamics on Networks
-### Section 1:
-- Basic epidemic models: SI, SIR, SIS
-- Threshold models and influence
-- Modelling diffusion and contagion on networks
-### Section 2:
-- Simulating epidemic spreading using Python
-- **Coding Task:** Implement the SIR model on a social network and analyze the spread of an infection
-- **Natural Language Task:** Discuss how network structure affects the spread of a disease
-- Visualizing the spread of epidemics on networks
 
 ---
 
