@@ -71,6 +71,29 @@ Key aspects:
 
 ---
 
+## Advanced Attack Strategies & Countermeasures
+
+- **Iterative Attacks:** Recalculate centrality after each removal (e.g., iterative degree/betweenness). More effective than static targeting.
+- **Collective Attacks:** Remove sets of nodes (e.g., cut sets) that, together, fragment the network.
+- **Attacks on Edges:** Target critical edges, not just nodes, to disrupt flow/connectivity.
+- **Countermeasures:** Hide critical nodes, dynamically reassign roles, or increase redundancy.
+
+*Understanding sophisticated attack vectors helps design better defenses for real-world networks.*
+
+---
+
+## Beyond Connectivity: Functional Resilience
+
+- **Structural Resilience:** Maintains physical connections (e.g., GCC size, path length).
+- **Functional Resilience:** Maintains the network's *intended task* or *service* despite disruptions.
+    - E.g., a connected network with unusable latency is not functionally resilient.
+    - E.g., a supply chain with alternative routes but missed delivery deadlines.
+- **Metrics:** Task-specific (e.g., delivery time, processing capacity, information accuracy).
+
+*A network can be "connected" but still fail to perform its function. Both aspects matter!*
+
+---
+
 ## Measuring Resilience
 
 How do we quantify if a network is resilient?
@@ -212,6 +235,17 @@ Modeling cascading failures often involves defining node capacities and load dis
 
 ---
 
+## Resilience in Interdependent Networks
+
+- **Definition:** Networks whose nodes/edges depend on those in another network (e.g., power grid ↔ communication network).
+- **Vulnerability:** Failure in one network can trigger failures in the dependent network, causing feedback loops.
+- **Example:** Power-communication, transport-logistics.
+- **Cascades of Cascades:** Coupled cascading failures can be more severe than in isolated networks.
+
+*Many critical infrastructures are interdependent, making resilience analysis more complex and urgent.*
+
+---
+
 ## Strategies to Enhance Network Resilience 1/2
 
 1.  **Redundancy:**
@@ -236,6 +270,29 @@ Modeling cascading failures often involves defining node capacities and load dis
     - E.g., dynamic routing in communication networks.
 6.  **Controlling Load Distribution:**
     - Design systems where load redistribution after a failure doesn't immediately overload other components.
+
+---
+
+## Dynamic Resilience: Network Recovery & Self-Healing
+
+- **Self-Healing:** Autonomous detection and reconfiguration after damage (e.g., rerouting, backup activation).
+- **Repair Strategies:** Prioritize repairs to restore function quickly (e.g., fix critical hubs first).
+- **Adaptive Systems:** Use learning and adaptation to enhance recovery.
+- **Metric:** "Time to recovery" as a measure of resilience.
+
+*Recovery and adaptation are as important as resistance to failure.*
+
+---
+
+## The Price of Resilience: Costs and Trade-offs
+
+- **Economic Costs:** Redundancy, robust components, maintenance.
+- **Performance Trade-offs:** Decentralization may increase latency; modularity can limit efficiency.
+- **Complexity:** More resilient designs are harder to manage.
+- **Cost-Benefit Analysis:** Balance resilience with acceptable costs and performance.
+- **Key Question:** "How much resilience is enough?"
+
+*Perfect resilience is often impractical—trade-offs are essential in real-world design.*
 
 ---
 
@@ -271,6 +328,42 @@ for i in range(n_initial):
 ---
 
 ![width:900px bg](images/resilience_plot.png)
+
+---
+
+## Simulation Tools for Network Resilience Analysis
+
+Modeling and analyzing network resilience:
+
+- **InfraRisk:** An open-source platform for simulating disaster-induced failures and recovery in interdependent infrastructure networks.
+
+- **EXata Network Modeling:** A digital twin solution that allows for the analysis and optimization of network behavior in a controlled environment.
+  [Keysight Technologies](https://www.keysight.com/)
+
+- **SimGrid:** A framework for simulating distributed computing systems, useful for evaluating algorithms and network protocols under various scenarios.
+  [Wikipedia](https://en.wikipedia.org/wiki/SimGrid)
+
+---
+
+## Advanced Concepts: Chaos Engineering and Fault Injection
+
+Proactive resilience testing:
+
+- **Chaos Engineering:** A discipline that involves experimenting on a system to build confidence in its ability to withstand turbulent conditions.
+  Tools like Netflix's Chaos Monkey intentionally disrupt systems to test their resilience.
+  [Wikipedia](https://en.wikipedia.org/wiki/Chaos_engineering)
+
+- **Fault Injection:** A technique for improving the coverage of a test by introducing faults to ensure that the system can handle error conditions gracefully.
+
+![width:200px bg right:20%](images/chaosmonkey.png)
+
+---
+
+## Emerging Technologies: AI, Digital Twins, and Agent-Based Modeling
+
+Future direction of network resilience strategies:
+
+- **Integration of AI and Digital Twins:** Combining agent-based modeling, large language models, and digital twins creates sophisticated simulation platforms for analyzing complex scenarios like disaster-driven infrastructure failures.
 
 ---
 
